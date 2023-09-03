@@ -16,25 +16,25 @@ layout: blog
                     {% endif %}
                 </a>
             </h2>
-            <p class="text-base leading-6 text-gray-500 mb-3">
+            <p class="text-base leading-6 text-neutral-500 mb-3 font-mono">
                 <time>
                     {{ post.date | readableDate }}
-                    by
-                    <a>{{ post.data.author }}</a>
-
                 </time>
+                <a href="{{ post.url | url }}" class="text-teal-600 font-bold text-lg">
+                    Read➡
+                </a>
             </p>
-            {% if post.data.description %}
+            <!-- {% if post.data.description %}
                 <p class="text-lg text-gray-500 mb-3">
                     {{ post.data.description }}
                 </p>
-            {% endif %}
+            {% endif %} -->
 
-            <p>
-                <a href="{{ post.url | url }}" class="text-indigo-500 font-bold text-lg">
+            <!-- <p>
+                <a href="{{ post.url | url }}" class="text-teal-600 font-bold text-lg">
                     Read more →
                 </a>
-            </p>
+            </p> -->
 
         </article>
     {% endfor %}

@@ -17,7 +17,14 @@
     {% endif %}
   </head>
   <body>
-    {% include "./partials/navbar.html" %}
+
+    <div class="{{ 'lg:fixed' if path == 'home' }} w-full">
+      <nav class="flex items-center justify-center lg:justify-between flex-wrap p-6 lg:px-0 container mx-auto" x-data="{ isOpen: false }" @keydown.escape="isOpen = false"  @click.away="isOpen = false">
+          <!--Logo etc-->
+                  <img src="/static/img/joe-code.png" width="64" height="64">
+
+      </nav>
+  </div>
 
     {{ content | safe }}
 
