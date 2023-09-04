@@ -4,9 +4,38 @@ layout: default
 ---
 
 <div class="container max-w-3xl mt-6 px-6">
-
     <h1 class="font-bold text-5xl">{{title}}</h1>
 
-    {{ content | safe }}
-
+    <section class="mt-14">
+        <ol class="relative border-l border-neutral-500">
+            {% if work.items %} {% for item in work.items %}
+            <li class="mb-10 ml-6">
+                <span
+                    class="absolute flex items-center justify-center w-6 h-6 bg-teal-100 rounded-full -left-3 ring-1 ring-teal-600"
+                >
+                    <svg
+                        class="w-2.5 h-2.5 text-teal-600"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                    >
+                        <path
+                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
+                        />
+                    </svg>
+                </span>
+                <h3 class="flex items-center font-normal mb-1 text-lg text-gray-900">
+                    <span class="font-semibold">{{item.company}}</span>&nbsp;|&nbsp;{{item.title}}
+                </h3>
+                <time class="block mb-2 text-sm font-normal leading-none text-neutral-500"
+                    >{{item.when}}</time
+                >
+                <p class="mb-4 text-base font-normal text-gray-500">
+                    {{item.desc | markdown | safe}}
+                </p>
+            </li>
+            {% endfor %} {% endif %}
+        </ol>
+    </section>
 </div>

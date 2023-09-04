@@ -1,0 +1,57 @@
+---
+items:
+  - company: Smartsheet
+    title: Principal Engineer
+    desc:
+      My role at Smartsheet is quite broad. I'm on the team rebuilding the core "sheet" product. That includes the grid/card/gannt/calenar views.
+      <br><br>
+      My primary focus has been how to scale the product to meet the data expectations set by customers. I also spearheaded the realtime collaboration portion of the app which allows all logged-in users on a sheet see what other users are doing. This was particularly challenging because we needed to process, commit, and transfer action to all users in under a second.
+    when: April 2021
+  - company: Drift
+    title: Staff Engineer
+    desc:
+      Drift acquired Siftrock in 2018.
+      <br><br>
+      I lead the Email AI team responsible for over-seeing our next-generation of Classification and NLP of email. I work with the product team to scope out work, and set goals. I am able to take an ambiguous task and work through the use-cases and design to meet the business need.
+      <br><Br>
+      Once something has been properly scoped I work through the architecture making sure any impact is removed (or at a minimum, limited and understood) and begin implementation.
+    when: August 2018
+  - company: Siftrock
+    title: Principal Engineer
+    desc:
+      Siftrock was acquired by drift in August 2018.
+      <Br><Br>
+      At Siftrock I would work with a product manager to build and deliver the core of Email AI. I was responsible for the design and architecture of the entire system.
+      <br><br>
+      We leveraged Node.js microservices running in AWS to have a fast and reliable machine learning platform that could scale to meet demand. Angular was used on the frontend to give customers the ability to view, route, and track incoming email.
+    when: October 2017
+  - company: Slalom Consulting
+    title: Sr. Technical Consultant
+    desc:
+      As a Technical Consultant I worked with a number of companies including Microsoft, Amazon, Expedia, Premera, and Starbucks.
+      <br><br>
+      My role would vary, but in general I would be doing design and architecture (both on-site and cloud) as well as implementation of the backend and frontend systems. The technologies used would vary from company to company, but they included Java, Node.js, Angular, React, and C#.
+    when: September 2013
+  - company: Optify
+    title: Sr. Engineer
+    desc:
+      Optify offered a cloud based solution for marketing agencies to manage their programs.
+      <br><br>
+      I was on the team that led the conversion of the front end to an ASP.net MVC UI. I contributed to the architecture, design, and code for several critical systems in the Optify product. My particular focus was on performance, scale, reliability, and distributed systems.
+    when: December 2012
+  - company: Slalom Consulting
+    title: Sr. Technical Consultant
+    desc: I was on the team working on the "rGuest Stay" platform for Agilysys. As a full-stack engineer on the team, I would work on both the Angular website and the Java/Spring backend.
+    when: April 2011
+  - company: Visible Technologies
+    title: Lead Engineer
+    desc: After about two years as an enginner I was promoted to Lead. My responsibilities included building my team (recruiting new talent, and mentoring current team members), architecture and design of systems for "Big Data", and contributing to development. I was also responsible for making sure my team met the high standard of development practices we have had set in place.
+    when: April 2009
+  - company: Visible Technologies
+    title: Software Engineer
+    desc: As a developer on the Visible product suite I was responsible for designing specific features  and expected to meet a high standard of development practices.
+    when: May 2007
+  - company: Bricmont
+    title: Software Engineer
+    desc: Bricmont designs and builds industrial furnaces. Part of each contract was a desktop based training tool. I was part of the team building a web based replacement. We used ASP.net and SQL Server to do this.
+    when: June 2005
