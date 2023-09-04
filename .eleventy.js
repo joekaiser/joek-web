@@ -2,63 +2,87 @@ const yaml = require("js-yaml");
 const { DateTime } = require("luxon");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const htmlmin = require("html-minifier");
+const markdownIt = require("markdown-it");
+
+function getRandom(min, max) {
+    const floatRandom = Math.random();
+
+    const difference = max - min;
+
+    // random between 0 and the difference
+    const random = Math.round(difference * floatRandom);
+
+    const randomWithinRange = random + min;
+
+    return randomWithinRange;
+}
 
 module.exports = function (eleventyConfig) {
-  // Disable automatic use of your .gitignore
-  eleventyConfig.setUseGitIgnore(false);
+    const md = new markdownIt({
+        html: true,
+    });
 
-  // Merge data instead of overriding
-  eleventyConfig.setDataDeepMerge(true);
+    // Disable automatic use of your .gitignore
+    eleventyConfig.setUseGitIgnore(false);
 
-  // human readable date
-  eleventyConfig.addFilter("readableDate", (dateObj) => {
-    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(
-      "dd LLL yyyy"
-    );
-  });
+    // Merge data instead of overriding
+    eleventyConfig.setDataDeepMerge(true);
 
-  // Syntax Highlighting for Code blocks
-  eleventyConfig.addPlugin(syntaxHighlight);
+    // human readable date
+    eleventyConfig.addFilter("readableDate", (dateObj) => {
+        return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("dd LLL yyyy");
+    });
 
-  // To Support .yaml Extension in _data
-  // You may remove this if you can use JSON
-  eleventyConfig.addDataExtension("yaml", (contents) => yaml.load(contents));
+    eleventyConfig.addFilter("excerpt", (post) => {
+        const content = post.replace(/(<([^>]+)>)/gi, "");
+        return content.substr(0, content.lastIndexOf(".", 250)) + ".";
+    });
 
-  // Copy Static Files to /_Site
-  eleventyConfig.addPassthroughCopy({
-    "./src/admin/config.yml": "./admin/config.yml",
-    "./node_modules/alpinejs/dist/cdn.min.js": "./static/js/alpine.js",
-    "./node_modules/prismjs/themes/prism-tomorrow.css":
-      "./static/css/prism-tomorrow.css",
-  });
+    eleventyConfig.addFilter("markdown", (content) => {
+        return md.render(content);
+    });
 
-  // Copy Image Folder to /_site
-  eleventyConfig.addPassthroughCopy("./src/static/img");
+    // Syntax Highlighting for Code blocks
+    eleventyConfig.addPlugin(syntaxHighlight);
 
-  // Copy favicon to route of /_site
-  eleventyConfig.addPassthroughCopy("./src/favicon.ico");
+    // To Support .yaml Extension in _data
+    // You may remove this if you can use JSON
+    eleventyConfig.addDataExtension("yaml", (contents) => yaml.load(contents));
 
-  // Minify HTML
-  eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
-    // Eleventy 1.0+: use this.inputPath and this.outputPath instead
-    if (outputPath.endsWith(".html")) {
-      let minified = htmlmin.minify(content, {
-        useShortDoctype: true,
-        removeComments: true,
-        collapseWhitespace: true,
-      });
-      return minified;
-    }
+    // Copy Static Files to /_Site
+    eleventyConfig.addPassthroughCopy({
+        "./src/admin/config.yml": "./admin/config.yml",
+        "./node_modules/alpinejs/dist/cdn.min.js": "./static/js/alpine.js",
+        "./node_modules/prismjs/themes/prism-tomorrow.css": "./static/css/prism-tomorrow.css",
+    });
 
-    return content;
-  });
+    // Copy Image Folder to /_site
+    eleventyConfig.addPassthroughCopy("./src/static/img");
 
-  // Let Eleventy transform HTML files as nunjucks
-  // So that we can use .html instead of .njk
-  return {
-    dir: {
-      input: "src",
-    },
-    htmlTemplateEngine: "njk",
-  };
+    // Copy favicon to route of /_site
+    eleventyConfig.addPassthroughCopy("./src/favicon.ico");
+
+    // Minify HTML
+    eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
+        // Eleventy 1.0+: use this.inputPath and this.outputPath instead
+        if (outputPath.endsWith(".html")) {
+            let minified = htmlmin.minify(content, {
+                useShortDoctype: true,
+                removeComments: true,
+                collapseWhitespace: true,
+            });
+            return minified;
+        }
+
+        return content;
+    });
+
+    // Let Eleventy transform HTML files as nunjucks
+    // So that we can use .html instead of .njk
+    return {
+        dir: {
+            input: "src",
+        },
+        htmlTemplateEngine: "njk",
+    };
 };

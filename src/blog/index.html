@@ -3,39 +3,31 @@ layout: blog
 ---
 
 <section class="mt-15">
-    {% set postslist = collections.post %}
-
-    {% for post in postslist | reverse %}
-        <article class="my-8">
-            <h2 class="font-bold text-3xl text-gray-900 mb-2">
-                <a href="{{ post.url | url }}">
-                    {% if post.data.title %}
-                        {{ post.data.title }}
-                    {% else %}
-                        Untitled
-                    {% endif %}
-                </a>
-            </h2>
-            <p class="text-base leading-6 text-neutral-500 mb-3 font-mono">
-                <time>
-                    {{ post.date | readableDate }}
-                </time>
-                <a href="{{ post.url | url }}" class="text-teal-600 font-bold text-lg">
-                    Read➡
-                </a>
-            </p>
-            <!-- {% if post.data.description %}
+    {% set postslist = collections.post %} {% for post in postslist | reverse %}
+    <article class="my-8">
+        <h2 class="text-3xl text-gray-900 mb-2">
+            <a href="{{ post.url | url }}">
+                {% if post.data.title %} {{ post.data.title }} {% else %} Untitled {% endif %}
+            </a>
+        </h2>
+        <p class="text-base leading-6 text-neutral-500 mb-3 font-mono">
+            <time> {{ post.date | readableDate }} </time>
+            <a href="{{ post.url | url }}" class="text-teal-600 font-bold text-lg"> Read➡ </a>
+        </p>
+        <p class="text-lg text-gray-500 mb-3">
+            {{ post.templateContent | excerpt }}
+        </p>
+        <!-- {% if post.data.description %}
                 <p class="text-lg text-gray-500 mb-3">
                     {{ post.data.description }}
                 </p>
             {% endif %} -->
 
-            <!-- <p>
+        <!-- <p>
                 <a href="{{ post.url | url }}" class="text-teal-600 font-bold text-lg">
                     Read more →
                 </a>
             </p> -->
-
-        </article>
+    </article>
     {% endfor %}
 </section>

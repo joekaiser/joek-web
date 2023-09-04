@@ -4,9 +4,23 @@ layout: default
 ---
 
 <div class="container max-w-3xl mt-6 px-6">
-
     <h1 class="font-bold text-5xl">{{title}}</h1>
 
-    {{ content | safe }}
+    <!-- {% include "./_includes/partials/content.html" %} -->
+    <!-- <div class="w-full max-w-3xl grid grid-cols-1 lg:grid-cols-2 gap-4 my-8 px-4 lg:mx-0" > -->
 
+    {% if oss.items %} {% for item in oss.items %}
+    <div class="p-5">
+        <a href="{{item.url}}" target="_blank">
+            <!-- <strong class="bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-purple-500">
+                            {{item.title}}
+                        </strong> -->
+            <h3 class="text-teal-600">{{item.title}}</h3>
+        </a>
+        <!-- <h3>{{item.title}}</h3> -->
+        <div class="prose">{{item.desc | markdown | safe}}</div>
+    </div>
+    {% endfor %} {% endif %}
+
+    <!-- </div> -->
 </div>

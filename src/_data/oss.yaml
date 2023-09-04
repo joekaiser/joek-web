@@ -1,0 +1,8 @@
+---
+items:
+  - title: Fault Tolerance
+    url: "https://www.npmjs.com/package/fault-tolerance"
+    desc: I created Fault Tolerance after spending too much time tracking down an error in production. I wanted a way to normalize our logs as well as include context of what happend.
+  - title: MiniProfiler.AzureCacheStorage
+    url: "https://github.com/joekaiser/MiniProfiler.AzureCacheStorage"
+    desc: This is a [MiniProfiler](https://miniprofiler.com/) extension that solved a caching issue when running on multiple instances in Azure. It is a simple implementation that allows use of the Azure distribued cache so performance metrics are available to all instances in the pool.
