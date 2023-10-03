@@ -40,7 +40,7 @@ items:
       I was on the team that led the conversion of the front end to an ASP.net MVC UI. I contributed to the architecture, design, and code for several critical systems in the Optify product. My particular focus was on performance, scale, reliability, and distributed systems.
     when: December 2012
   - company: Slalom Consulting
-    title: Sr. Technical Consultant
+    title: Technical Consultant
     desc: I was on the team working on the "rGuest Stay" platform for Agilysys. As a full-stack engineer on the team, I would work on both the Angular website and the Java/Spring backend.
     when: April 2011
   - company: Visible Technologies
